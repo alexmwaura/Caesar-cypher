@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class CaesarCypher {
@@ -18,7 +20,7 @@ public class CaesarCypher {
         }
     }
 
-    public ArrayList<Integer>indexArray(String word){
+    public ArrayList<Integer> indexArray(@NotNull String word){
         ArrayList<Integer> integerIndex = new ArrayList<Integer>();
         for(char letter: word.toCharArray()){
           integerIndex.add(getIndex(letter));
@@ -26,7 +28,7 @@ public class CaesarCypher {
         return integerIndex;
     }
 
-    public Object encryptDecrypt(String sentence, int shiftIndex, String option){
+    public String encryptDecrypt(String sentence, int shiftIndex, String option){
         ArrayList<Integer> integerIndex = indexArray(sentence);
         ArrayList<Character> arrayListCharacters = new ArrayList<Character>();
         for(Integer index: integerIndex){
