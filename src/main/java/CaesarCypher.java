@@ -26,8 +26,8 @@ public class CaesarCypher {
         return integerIndex;
     }
 
-    public Object encryptDecrypt(String words,int shiftIndex, String option){
-        ArrayList<Integer> integerIndex = indexArray(words);
+    public Object encryptDecrypt(String sentence, int shiftIndex, String option){
+        ArrayList<Integer> integerIndex = indexArray(sentence);
         ArrayList<Character> arrayListCharacters = new ArrayList<Character>();
         for(Integer index: integerIndex){
             if(option.toLowerCase().equals("encrypt")){
