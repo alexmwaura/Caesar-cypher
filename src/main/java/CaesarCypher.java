@@ -20,9 +20,9 @@ public class CaesarCypher {
         }
     }
 
-    public ArrayList<Integer> indexArray(@NotNull String word){
+    public ArrayList<Integer> indexArray(@NotNull String sentence){
         ArrayList<Integer> integerIndex = new ArrayList<Integer>();
-        for(char letter: word.toCharArray()){
+        for(char letter: sentence.toCharArray()){
           integerIndex.add(getIndex(letter));
         }
         return integerIndex;
@@ -55,10 +55,10 @@ public class CaesarCypher {
                 }
             }
        }
-        StringBuilder encryptedResult = new StringBuilder(arrayListCharacters.size());
-        for(char encrypted: arrayListCharacters){
-            encryptedResult.append(encrypted);
+        StringBuilder endocryptResult = new StringBuilder(arrayListCharacters.size());
+        for(char endocrypt: arrayListCharacters){
+            endocryptResult.append(endocrypt);
         }
-        return encryptedResult.toString();
+        return endocryptResult.toString();
     }
 }
