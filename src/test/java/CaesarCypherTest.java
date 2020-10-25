@@ -35,4 +35,10 @@ public class CaesarCypherTest {
         String encryptedString = "mjqqt";
         assertEquals(encryptedString,caesarCypher.encryptDecrypt("hello",5, "encrypt"));
     }
+    @Test
+    public void decryptString_decryptString_String(){
+        CaesarCypher caesarCypher = new CaesarCypher();
+        String decrypted = "hello";
+        assertEquals(decrypted, caesarCypher.encryptDecrypt("mjqqt", 5, "decrypt"));
+    }
 }
