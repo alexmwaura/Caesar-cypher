@@ -7,14 +7,14 @@ import static org.junit.Assert.*;
 
 public class CaesarCypherTest {
     @Test
-    public void getIndexLower_returnTheIndexOfASingleLetterLower_66(){
+    public void getIndexLower_returnTheIndexOfASingleLetterLower_Integer(){
         CaesarCypher caesarCypher = new CaesarCypher();
         Integer index = 66;
         assertEquals(index,caesarCypher.getIndex('b'));
     }
 
     @Test
-    public void indexArray_returnIndexOfWord_ArrayList(){
+    public void indexArray_returnIndexOfUpperAndLower_ArrayList(){
         CaesarCypher caesarCypher = new CaesarCypher();
         ArrayList<Object> arrayList = new ArrayList<Object>();
         arrayList.add(65);
