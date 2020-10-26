@@ -25,41 +25,38 @@ public class CaesarCypher {
         for(char letter: sentence.toCharArray()){
           integerIndex.add(getIndex(letter));
         }
-
         return integerIndex;
     }
 
     public String encryptDecrypt(String sentence, int shiftIndex, String option){
-
         ArrayList<Character> arrayListCharacters = new ArrayList<Character>();
-        if(option.toLowerCase().equals("encrypt")){
-            ArrayList<Integer> integerIndex = indexArray(sentence);
-            for(Integer index: integerIndex){
-                if(index >= 65 && index <= 90 ){
-                    int newIndex = ((index - 65) + shiftIndex) % 26;
-                    arrayListCharacters.add(alphabets.toLowerCase().charAt(newIndex));
-                }else if(index == -1){
-                    arrayListCharacters.add(' ');
-                }else if (index >=91 && index <= 112){
-                    int newIndex = ((index-97)+ shiftIndex) % 26;
-                    arrayListCharacters.add(alphabets.charAt(newIndex));
+        ArrayList<Integer> integerIndex = indexArray(sentence);
+            for(Integer index: integerIndex) {
+                if (option.toLowerCase().equals("encrypt")) {
+                    if (index >= 65 && index <= 90) {
+                        int newIndex = ((index - 65) + shiftIndex) % 26;
+                        arrayListCharacters.add(alphabets.toLowerCase().charAt(newIndex));
+                    } else if (index == -1) {
+                        arrayListCharacters.add(' ');
+                    } else if (index >= 91 && index <= 112) {
+                        int newIndex = ((index - 97) + shiftIndex) % 26;
+                        arrayListCharacters.add(alphabets.charAt(newIndex));
+                    }
+                }
+                else if(option.toLowerCase().equals("decrypt")){
+                    if(index >= 65 && index <= 90 ){
+                        int newIndex = (((index - 65) - shiftIndex) + 26) % 26;
+                        arrayListCharacters.add(alphabets.toLowerCase().charAt(newIndex));
+                    }else if(index == -1){
+                        arrayListCharacters.add(' ');
+                    }else if (index >=91 && index <= 112){
+                        int newIndex = (((index-97) - shiftIndex) + 26) % 26;
+                        arrayListCharacters.add(alphabets.charAt(newIndex));
+                    }
+
                 }
             }
-       }
-        else if(option.toLowerCase().equals("decrypt")){
-            ArrayList<Integer> integerIndex = indexArray(sentence);
-            for(Integer index: integerIndex){
-                if(index >= 65 && index <= 90 ){
-                    int newIndex = (((index - 65) - shiftIndex) + 26) % 26;
-                    arrayListCharacters.add(alphabets.toLowerCase().charAt(newIndex));
-                }else if(index == -1){
-                    arrayListCharacters.add(' ');
-                }else if (index >=91 && index <= 112){
-                    int newIndex = (((index-97) - shiftIndex) + 26) % 26;
-                    arrayListCharacters.add(alphabets.charAt(newIndex));
-                }
-            }
-        }
+
         StringBuilder endocryptResult = new StringBuilder(arrayListCharacters.size());
         for(char endocrypt: arrayListCharacters){
             endocryptResult.append(endocrypt);
