@@ -37,7 +37,6 @@ public class CaesarCypher {
             for(Integer index: integerIndex){
                 if(index >= 65 && index <= 90 ){
                     int newIndex = ((index - 65) + shiftIndex) % 26;
-                    System.out.println((index-65)+ "" + newIndex);
                     arrayListCharacters.add(alphabets.toLowerCase().charAt(newIndex));
                 }else if(index == -1){
                     arrayListCharacters.add(' ');
