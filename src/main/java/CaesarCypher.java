@@ -1,5 +1,3 @@
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 public class CaesarCypher {
@@ -8,11 +6,13 @@ public class CaesarCypher {
         boolean isLowerCase = Character.isLowerCase(letter);
         boolean isUpperCase = Character.isUpperCase(letter);
         if(isLowerCase){
-            int indexLower = alphabets.toLowerCase().indexOf(letter) + 65;
+            int indexLower;
+            indexLower = alphabets.toLowerCase().indexOf(letter) + 65;
             return indexLower;
         }
         else if(isUpperCase){
-            int indexUpper = alphabets.indexOf(letter) + 97;
+            int indexUpper;
+            indexUpper = alphabets.indexOf(letter) + 97;
             return indexUpper;
         }
         else {
@@ -20,41 +20,47 @@ public class CaesarCypher {
         }
     }
 
-    public ArrayList<Integer> indexArray(@NotNull String sentence){
+    public ArrayList<Integer> indexArray(String sentence){
         ArrayList<Integer> integerIndex = new ArrayList<Integer>();
         for(char letter: sentence.toCharArray()){
           integerIndex.add(getIndex(letter));
         }
+
         return integerIndex;
     }
 
     public String encryptDecrypt(String sentence, int shiftIndex, String option){
-        ArrayList<Integer> integerIndex = indexArray(sentence);
+
         ArrayList<Character> arrayListCharacters = new ArrayList<Character>();
-        for(Integer index: integerIndex){
-            if(option.toLowerCase().equals("encrypt")){
+        if(option.toLowerCase().equals("encrypt")){
+            ArrayList<Integer> integerIndex = indexArray(sentence);
+            for(Integer index: integerIndex){
                 if(index >= 65 && index <= 90 ){
-                    int newIndex = index -65;
-                    arrayListCharacters.add(alphabets.toLowerCase().charAt(newIndex + shiftIndex));
+                    int newIndex = ((index - 65) + shiftIndex) % 26;
+                    System.out.println((index-65)+ "" + newIndex);
+                    arrayListCharacters.add(alphabets.toLowerCase().charAt(newIndex));
                 }else if(index == -1){
                     arrayListCharacters.add(' ');
-                }else if (index >=97 && index <= 112){
-                    int newIndex = index-97;
-                    arrayListCharacters.add(alphabets.charAt(newIndex + shiftIndex));
-                }
-            }
-            else if(option.toLowerCase().equals("decrypt")){
-                if(index >= 65 && index <= 90 ){
-                    int newIndex = index -65;
-                    arrayListCharacters.add(alphabets.toLowerCase().charAt(newIndex - shiftIndex));
-                }else if(index == -1){
-                    arrayListCharacters.add(' ');
-                }else if (index >=97 && index <= 112){
-                    int newIndex = index-97;
-                    arrayListCharacters.add(alphabets.charAt(newIndex - shiftIndex));
+                }else if (index >=91 && index <= 112){
+                    int newIndex = ((index-97)+ shiftIndex) % 26;
+                    arrayListCharacters.add(alphabets.charAt(newIndex));
                 }
             }
        }
+        else if(option.toLowerCase().equals("decrypt")){
+            ArrayList<Integer> integerIndex = indexArray(sentence);
+            for(Integer index: integerIndex){
+                if(index >= 65 && index <= 90 ){
+                    int newIndex = (((index - 65) - shiftIndex) + 26) % 26;
+                    arrayListCharacters.add(alphabets.toLowerCase().charAt(newIndex));
+                }else if(index == -1){
+                    arrayListCharacters.add(' ');
+                }else if (index >=91 && index <= 112){
+                    int newIndex = (((index-97) - shiftIndex) + 26) % 26;
+                    arrayListCharacters.add(alphabets.charAt(newIndex));
+                }
+            }
+        }
         StringBuilder endocryptResult = new StringBuilder(arrayListCharacters.size());
         for(char endocrypt: arrayListCharacters){
             endocryptResult.append(endocrypt);
