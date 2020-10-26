@@ -2,7 +2,7 @@
 
 Alex Mwaura
 
-# scrabble score
+# Caesar Cypher
 A simple java application for the Caesar cypher that encrypts and decrypts any given word or sentence
 
 ## Prerequisites
