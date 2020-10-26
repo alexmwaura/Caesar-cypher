@@ -32,13 +32,13 @@ public class CaesarCypherTest {
     @Test
     public void encryptedString_encryptString_String(){
         CaesarCypher caesarCypher = new CaesarCypher();
-        String encryptedString = "mjqqt";
-        assertEquals(encryptedString,caesarCypher.encryptDecrypt("hello",5, "encrypt"));
+        String encryptedString = "Gdkkn";
+        assertEquals(encryptedString,caesarCypher.encryptDecrypt("Hello",25, "encrypt"));
     }
     @Test
     public void decryptString_decryptString_String(){
         CaesarCypher caesarCypher = new CaesarCypher();
-        String decrypted = "hello";
-        assertEquals(decrypted, caesarCypher.encryptDecrypt("mjqqt", 5, "decrypt"));
+        String decrypted = "Hello";
+        assertEquals(decrypted, caesarCypher.encryptDecrypt("Gdkkn", 25, "decrypt"));
     }
 }
